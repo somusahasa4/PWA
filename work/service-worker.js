@@ -31,6 +31,9 @@ self.addEventListener('fetch', function(event) {
           console.log('response found');
           return response;
         }
+        else {
+          console.log('error in fetch SW')
+        }
         return fetch(event.request);
       }
     )
