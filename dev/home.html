@@ -3,7 +3,12 @@
 <head>
   <meta name="keywords" content="" />
   <meta name="description" content="" />
-  <title>Verticurl page</title>
+  <meta charset="uft-8" />
+  <meta name="theme-color" content="#536878" />
+  <meta name=viewport content="width=device-width, initial-scale=1">
+  <title>Verticurl!</title>
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="manifest" href="/manifest.json">
   <link href="https://bootswatch.com/3/cosmo/bootstrap.min.css" rel="stylesheet" type="text/css">
   <style type="text/css">
     html{
@@ -431,5 +436,30 @@
           resetUI();
 
 
+</script>
+
+<script src="js/requestanimframe.js"></script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  console.log("Will the service worker register?");
+  navigator.serviceWorker.register('service-worker.js')
+    .then(function(reg){
+      console.log("Yes, it did again.");
+    }).catch(function(err) {
+      console.log("No it didn't. This happened: ", err)
+    });
+}
+
+// Go
+window.onload = function() {
+  Fireworks.initialize();
+  var howLaunched = window.location.search.substring(1).split('=')[0];
+  if (howLaunched === 'homescreen') {
+    var welcome = document.getElementById('welcome-back');
+    welcome.style.display = 'block';
+    welcome.classList.remove('isPaused');
+  }
+};
 </script>
 </html>
