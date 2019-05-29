@@ -249,13 +249,26 @@
             requestPermission();
           });
           $('#submit').click(function(){
-            jQuery('#TriggerSubmit').click();
+            //jQuery('#TriggerSubmit').click();
           })
 
 </script>
 <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js" type="text/javascript"></script>
 <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-messaging.js" type="text/javascript"></script>
 <script type="text/javascript">
+
+
+// Go
+window.onload = function() {
+  Fireworks.initialize();
+  var howLaunched = window.location.search.substring(1).split('=')[0];
+  if (howLaunched === 'homescreen') {
+    var welcome = document.getElementById('welcome-back');
+    welcome.style.display = 'block';
+    welcome.classList.remove('isPaused');
+  }
+};
+
         navigator.serviceWorker.register('https://verticurl-sandbox.neolane.net/res/verticurl/firebase-messaging-sw.js')
           .then((registration) => {
             messaging.useServiceWorker(registration);
